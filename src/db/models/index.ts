@@ -6,6 +6,13 @@ import 'colors'
 
 // Import define function from database models
 import defineMovies from './movies'
+import defineTeamMates from  './teammates'
+import defineMovieGenres from './movieGeners'
+import defineGenres from './genres'
+import defineSubtitles from './subtitles'
+import definePersons from './persons'
+import defineRoles from './roles'
+
 
 // Set true because otherwise BIGINT return string instead of integer https://github.com/sequelize/sequelize/issues/1774
 pg.defaults.parseInt8 = true
@@ -22,7 +29,13 @@ sequelize
     .catch((e: any) => console.error(`Unable to connect to the database${e}.`.red))
 
 const models = {
-    Movies: defineMovies(sequelize)
+    Movies: defineMovies(sequelize),
+    TeamMated: defineTeamMates(sequelize),
+    MovieGeners: defineMovieGenres(sequelize),
+    Genres: defineGenres(sequelize),
+    Subtitles: defineSubtitles(sequelize),
+    Persons: definePersons(sequelize),
+    Roles: defineRoles(sequelize)
 }
 
 forEach(models, (value) => {
