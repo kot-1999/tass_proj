@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./distDatabase",
+    "sourceMap": false,
+    "noImplicitAny": true,
+    "typeRoots" : [
+      "node_modules/@types",
+      "./src/types"
+    ],
+    "skipLibCheck": true
+  },
+  "include": [
+    "./src/db/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
