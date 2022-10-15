@@ -4,6 +4,7 @@ import { Models } from './index'
 
 export class MoviesModel extends DatabaseModel {
     id: number
+    name: string
 }
 
 export default (sequelize: Sequelize) => {
@@ -15,6 +16,10 @@ export default (sequelize: Sequelize) => {
                 primaryKey: true,
                 unique: true,
                 autoIncrement: true
+            },
+            name: {
+                type: DataTypes.STRING,
+                allowNull: false
             }
 
         },
