@@ -5,7 +5,7 @@ import {GENRE} from "../../utils/enums";
 
 export class GenersModel extends DatabaseModel {
     id: number
-    genre: GENRE
+    name: GENRE
 }
 
 export default (sequelize: Sequelize) => {
@@ -18,7 +18,7 @@ export default (sequelize: Sequelize) => {
                 unique: true,
                 autoIncrement: true
             },
-            genre: {
+            name: {
                 type: DataTypes.STRING,
                 allowNull: false
             }
@@ -31,7 +31,17 @@ export default (sequelize: Sequelize) => {
         }
     )
     ;GenersModel.associate = (models: Models) => {
-
+        GenersModel.belongsToMany(models.Movies, {
+            foreignKey: {
+                name: 'genreID',
+                allowNull: false
+            },
+            through: {
+                model: models.MovieGeners,
+                unique: false
+            },
+            constraints: false
+        })
     }
     return GenersModel
 }

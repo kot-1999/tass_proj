@@ -19,12 +19,14 @@ export default (sequelize: Sequelize) => {
             id: {
                 type: DataTypes.BIGINT,
                 allowNull: false,
+                unique: false,
                 primaryKey: true,
             },
             movieID: {
                 type: DataTypes.BIGINT,
                 allowNull: false,
                 primaryKey: true,
+                unique: false,
             },
             language: {
                 type: DataTypes.STRING(2),
@@ -51,7 +53,12 @@ export default (sequelize: Sequelize) => {
         }
     )
     ;SubtitlesModel.associate = (models: Models) => {
-
+        SubtitlesModel.belongsTo(models.Movies, {
+            foreignKey: {
+                name: 'movieID',
+                allowNull: false
+            }
+        })
     }
     return SubtitlesModel
 }

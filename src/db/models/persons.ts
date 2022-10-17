@@ -41,7 +41,17 @@ export default (sequelize: Sequelize) => {
         }
     )
     ;PersonModel.associate = (models: Models) => {
-
+        PersonModel.belongsToMany(models.Movies, {
+            foreignKey: {
+                name: 'personID',
+                allowNull: false
+            },
+            through: {
+                model: models.TeamMates,
+                unique: false
+            },
+            constraints: false
+        })
     }
     return PersonModel
 }

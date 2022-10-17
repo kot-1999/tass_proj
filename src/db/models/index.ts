@@ -30,7 +30,7 @@ sequelize
 
 const models = {
     Movies: defineMovies(sequelize),
-    TeamMated: defineTeamMates(sequelize),
+    TeamMates: defineTeamMates(sequelize),
     MovieGeners: defineMovieGenres(sequelize),
     Genres: defineGenres(sequelize),
     Subtitles: defineSubtitles(sequelize),

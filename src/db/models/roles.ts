@@ -32,7 +32,17 @@ export default (sequelize: Sequelize) => {
         }
     )
     ;RoleModel.associate = (models: Models) => {
-
+        RoleModel.belongsToMany(models.Movies, {
+            foreignKey: {
+                name: 'roleID',
+                allowNull: false
+            },
+            through: {
+                model: models.TeamMates,
+                unique: false
+            },
+            constraints: false
+        })
     }
     return RoleModel
 }

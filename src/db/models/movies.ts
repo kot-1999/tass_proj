@@ -85,7 +85,34 @@ export default (sequelize: Sequelize) => {
         }
     )
     ;MoviesModel.associate = (models: Models) => {
-
+        MoviesModel.belongsToMany(models.Genres, {
+            foreignKey: {
+                name: 'movieID',
+                allowNull: false
+            },
+            through: {
+                model: models.MovieGeners,
+                unique: false
+            },
+            constraints: false
+        })
+        MoviesModel.belongsToMany(models.Persons, {
+            foreignKey: {
+                name: 'movieID',
+                allowNull: false
+            },
+            through: {
+                model: models.TeamMates,
+                unique: false
+            },
+            constraints: false
+        })
+        MoviesModel.hasMany(models.Subtitles, {
+            foreignKey: {
+                name: 'movieID',
+                allowNull: false
+            }
+        })
     }
     return MoviesModel
 }

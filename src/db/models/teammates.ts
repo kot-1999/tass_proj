@@ -14,17 +14,20 @@ export default (sequelize: Sequelize) => {
             movieID: {
                 type: DataTypes.BIGINT,
                 allowNull: false,
-                primaryKey: true,
+                unique: false,
+                primaryKey: true
             },
             roleID: {
                 type: DataTypes.BIGINT,
                 allowNull: false,
-                primaryKey: true,
+                unique: false,
+                primaryKey: true
             },
             personID: {
                 type: DataTypes.BIGINT,
                 allowNull: false,
-                primaryKey: true,
+                unique: false,
+                primaryKey: true
             }
         },
         {
