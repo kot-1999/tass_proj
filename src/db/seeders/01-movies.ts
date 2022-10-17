@@ -6,16 +6,18 @@ export async function up() {
 
         return await Movies.bulkCreate([
             {
-                name: 'movie 1'
-            },
-            {
-                name: 'movie 2'
-            },
-            {
-                name: 'movie 3'
-            },
-            {
-                name: 'movie 4'
+                name: 'Marvael',
+                description: 'string',
+                votes: 123,
+                rating: 5.12,
+                budget: 1235.56,
+                duration: 1245.5,
+                worldWideIncome: 123.56,
+                reviewsFromUsers: 12,
+                reviewsFromCritics: 12,
+
+                published: '1967',
+                created: '1906-12-26',
             }
         ])
     } catch (err) {
