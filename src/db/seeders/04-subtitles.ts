@@ -7,7 +7,18 @@ export async function up() {
     try {
         // const data = fs.readFileSync('./all_subtitles.json', {encoding:'utf8', flag:'r'});
         // const allSubtitles = JSON.parse(data);
-
+        // let allSubtitles: any = []
+        // subtitles.forEach((subtitle: any) => {
+        //     allSubtitles = [...allSubtitles, {
+        //         id: subtitle.id,
+        //         movieID: subtitle.movieID,
+        //         language: LANGUAGE.ITALIAN,
+        //         text: subtitle.text,
+        //         startTime: subtitle.start,
+        //         endTime: subtitle.end
+        //     }]
+        // })
+        
         const { Subtitles } = models
 
         return await Subtitles.bulkCreate([
