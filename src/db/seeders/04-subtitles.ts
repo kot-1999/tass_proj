@@ -1,8 +1,13 @@
 import {models} from "../models"
 import { LANGUAGE } from "../../utils/enums";
 
+const fs = require('fs');
+
 export async function up() {
     try {
+        // const data = fs.readFileSync('./all_subtitles.json', {encoding:'utf8', flag:'r'});
+        // const allSubtitles = JSON.parse(data);
+
         const { Subtitles } = models
 
         return await Subtitles.bulkCreate([
