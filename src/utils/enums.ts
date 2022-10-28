@@ -4,12 +4,6 @@ export const enum ROLE {
     ACTOR = 'ACTOR'
 }
 
-// Todo: end the list
-export const enum GENRE {
-    DRAMA = 'DRAMA',
-    HORROR = 'HORROR'
-}
-
 export const enum LANGUAGE {
     ITALIAN = 'it'
 }
