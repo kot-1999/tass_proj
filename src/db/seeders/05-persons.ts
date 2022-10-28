@@ -1,11 +1,11 @@
 import {models} from "../models"
-import {movieGenres} from "./00-convertData";
+import {persons, roles} from "./00-convertData";
 
 export async function up() {
     try {
-        const { MovieGeners } = models
+        const { Persons } = models
 
-        return await MovieGeners.bulkCreate(movieGenres)
+        return await Persons.bulkCreate(persons.map((person, index) => ({ primaryName: person, role: roles[index] })))
     } catch (err) {
         console.log(err)
         return Promise.reject(err)

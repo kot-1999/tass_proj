@@ -1,25 +1,11 @@
 import {models} from "../models"
+import {movies} from "./00-convertData";
 
 export async function up() {
     try {
         const { Movies } = models
 
-        return await Movies.bulkCreate([
-            {
-                name: 'Marvael',
-                description: 'string',
-                votes: 123,
-                rating: 5.12,
-                budget: 1235.56,
-                duration: 1245.5,
-                worldWideIncome: 123.56,
-                reviewsFromUsers: 12,
-                reviewsFromCritics: 12,
-
-                published: '1967',
-                created: '1906-12-26',
-            }
-        ])
+        return await Movies.bulkCreate(movies)
     } catch (err) {
         console.log(err)
         return Promise.reject(err)

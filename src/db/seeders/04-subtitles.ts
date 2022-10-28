@@ -1,52 +1,16 @@
 import {models} from "../models"
-import { LANGUAGE } from "../../utils/enums";
-
-const fs = require('fs');
+import { subtitles } from "./00-convertData";
 
 export async function up() {
     try {
-        // const data = fs.readFileSync('./all_subtitles.json', {encoding:'utf8', flag:'r'});
-        // const allSubtitles = JSON.parse(data);
-        // let allSubtitles: any = []
-        // subtitles.forEach((subtitle: any) => {
-        //     allSubtitles = [...allSubtitles, {
-        //         id: subtitle.id,
-        //         movieID: subtitle.movieID,
-        //         language: LANGUAGE.ITALIAN,
-        //         text: subtitle.text,
-        //         startTime: subtitle.start,
-        //         endTime: subtitle.end
-        //     }]
-        // })
-        
         const { Subtitles } = models
-
-        return await Subtitles.bulkCreate([
-            {
-                id: 1,
-                movieID: 1,
-                language: LANGUAGE.ITALIAN,
-                text: 'string',
-                startTime: 3,
-                endTime: 56,
-            },
-            {
-                id: 2,
-                movieID: 1,
-                language: LANGUAGE.ITALIAN,
-                text: 'string',
-                startTime: 3,
-                endTime: 56,
-            },
-            {
-                id: 3,
-                movieID: 1,
-                language: LANGUAGE.ITALIAN,
-                text: 'string',
-                startTime: 3,
-                endTime: 56,
-            }
-        ])
+        let a = 0
+        const promises: Array<Promise<any>> = []
+        for (let b = 2000; b < subtitles.length; a = b, b+=2000) {
+            promises.push(Subtitles.bulkCreate(subtitles.slice(a, b)))
+        }
+        promises.push(Subtitles.bulkCreate(subtitles.slice(a, subtitles.length)))
+        return await Promise.all(promises)
     } catch (err) {
         console.log(err)
         return Promise.reject(err)
