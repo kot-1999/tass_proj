@@ -6,14 +6,17 @@
     "outDir": "./distDatabase",
     "sourceMap": false,
     "noImplicitAny": true,
+    "resolveJsonModule": true,
     "typeRoots" : [
       "node_modules/@types",
-      "./src/types"
+      "./src/types",
+      "./scripts/**/*"
     ],
     "skipLibCheck": true
   },
   "include": [
-    "./src/db/**/*"
+    "./src/db/**/*",
+    "./scripts/**/*"
   ],
   "exclude": [
     "node_modules"
