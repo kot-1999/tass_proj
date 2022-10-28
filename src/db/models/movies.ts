@@ -33,39 +33,43 @@ export default (sequelize: Sequelize) => {
                 allowNull: false
             },
             description: {
-                type: DataTypes.STRING,
+                type: DataTypes.TEXT,
                 allowNull: false
             },
             votes: {
                 type: DataTypes.BIGINT,
-                allowNull: false,
+                allowNull: true,
                 defaultValue: 0
             },
             rating: {
                 type: DataTypes.REAL,
-                allowNull: false,
+                allowNull: true,
                 defaultValue: 0
             },
             budget: {
                 type: DataTypes.DOUBLE,
-                allowNull: true
+                allowNull: true,
+                defaultValue: null
             },
             duration: {
                 type: DataTypes.INTEGER,
-                allowNull: false
+                allowNull: true,
+                defaultValue: null
             },
             worldWideIncome: {
                 type: DataTypes.DOUBLE,
-                allowNull: true
+                allowNull: true,
+                defaultValue: null
             },
             reviewsFromUsers: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
+                allowNull: true,
                 defaultValue: 0
             },
             reviewsFromCritics: {
                 type: DataTypes.INTEGER,
-                allowNull: false
+                allowNull: true,
+                defaultValue: 0
             },
             published: {
                 type: DataTypes.DATE,
@@ -102,7 +106,7 @@ export default (sequelize: Sequelize) => {
                 allowNull: false
             },
             through: {
-                model: models.TeamMates,
+                model: models.MoviesPersons,
                 unique: false
             },
             constraints: false

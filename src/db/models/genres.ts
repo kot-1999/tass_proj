@@ -1,11 +1,10 @@
 import { Sequelize, DataTypes } from 'sequelize'
 import { DatabaseModel } from '../../types/models'
 import { Models } from './index'
-import {GENRE} from "../../utils/enums";
 
 export class GenersModel extends DatabaseModel {
     id: number
-    name: GENRE
+    name: string
 }
 
 export default (sequelize: Sequelize) => {

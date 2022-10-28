@@ -6,12 +6,11 @@ import 'colors'
 
 // Import define function from database models
 import defineMovies from './movies'
-import defineTeamMates from  './teammates'
+import defineMoviesPersons from './moviesPersons'
 import defineMovieGenres from './movieGeners'
 import defineGenres from './genres'
 import defineSubtitles from './subtitles'
 import definePersons from './persons'
-import defineRoles from './roles'
 
 
 // Set true because otherwise BIGINT return string instead of integer https://github.com/sequelize/sequelize/issues/1774
@@ -30,12 +29,11 @@ sequelize
 
 const models = {
     Movies: defineMovies(sequelize),
-    TeamMates: defineTeamMates(sequelize),
+    MoviesPersons: defineMoviesPersons(sequelize),
     MovieGeners: defineMovieGenres(sequelize),
     Genres: defineGenres(sequelize),
     Subtitles: defineSubtitles(sequelize),
     Persons: definePersons(sequelize),
-    Roles: defineRoles(sequelize)
 }
 
 forEach(models, (value) => {
