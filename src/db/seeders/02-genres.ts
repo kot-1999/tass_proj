@@ -1,18 +1,11 @@
 import {models} from "../models"
-import {GENRE} from "../../utils/enums";
+import {genres} from "./00-convertData";
 
 export async function up() {
     try {
         const { Genres } = models
 
-        return await Genres.bulkCreate([
-            {
-                name: GENRE.DRAMA
-            },
-            {
-                name: GENRE.HORROR
-            }
-        ])
+        return await Genres.bulkCreate(genres.map((genre) => ({ name: genre})))
     } catch (err) {
         console.log(err)
         return Promise.reject(err)

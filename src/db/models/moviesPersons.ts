@@ -1,39 +1,40 @@
 import { Sequelize, DataTypes } from 'sequelize'
 import { DatabaseModel } from '../../types/models'
 import { Models } from './index'
+import {ROLE} from "../../utils/enums";
 
 export class TeamMatesModel extends DatabaseModel {
     movieID: number
-    roleID: number
     personID: number
 }
 
 export default (sequelize: Sequelize) => {
     TeamMatesModel.init(
         {
+            id: {
+                type: DataTypes.BIGINT,
+                allowNull: false,
+                primaryKey: true,
+                unique: true,
+                autoIncrement: true
+            },
             movieID: {
                 type: DataTypes.BIGINT,
                 allowNull: false,
                 unique: false,
-                primaryKey: true
-            },
-            roleID: {
-                type: DataTypes.BIGINT,
-                allowNull: false,
-                unique: false,
-                primaryKey: true
+                primaryKey: true,
             },
             personID: {
                 type: DataTypes.BIGINT,
                 allowNull: false,
                 unique: false,
-                primaryKey: true
+                primaryKey: true,
             }
         },
         {
             sequelize,
             timestamps: false,
-            modelName: 'teamMates',
+            modelName: 'moviesPersons',
             paranoid: false
         }
     )

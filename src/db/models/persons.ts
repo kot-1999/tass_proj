@@ -4,10 +4,8 @@ import { Models } from './index'
 
 export class PersonModel extends DatabaseModel {
     id: number
-
     primaryName: string
-    birthYear: Date
-    deathYear: Date
+
 }
 
 export default (sequelize: Sequelize) => {
@@ -24,13 +22,10 @@ export default (sequelize: Sequelize) => {
                 type: DataTypes.TEXT,
                 allowNull: false
             },
-            birthYear: {
-                type: DataTypes.DATE,
-                allowNull: true
-            },
-            deathYear: {
-                type: DataTypes.DATE,
-                allowNull: true
+            role: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                unique: false
             }
         },
         {
@@ -47,7 +42,7 @@ export default (sequelize: Sequelize) => {
                 allowNull: false
             },
             through: {
-                model: models.TeamMates,
+                model: models.MoviesPersons,
                 unique: false
             },
             constraints: false
