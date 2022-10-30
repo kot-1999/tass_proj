@@ -23,15 +23,11 @@ fs.readFile("./movies/IMDb_movies.json", "utf8", (err, jsonString) => {
     }
     try {
       let movies = JSON.parse(jsonString);
-      // console.log("Movies id is:", movies[0].imdb_title_id);
-
       movies = movies.filter(movie => {
         return moviesID.includes(movie.imdb_title_id);
       })
-      console.log(movies);
 
       const JsonString = JSON.stringify(movies);
-      // console.log(idJsonString);
 
       fs.writeFile('./movies/all_movies.json', JsonString, err => {
           if (err) {

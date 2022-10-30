@@ -12,10 +12,10 @@ async function extract_subtitles (zipName, outputFileName) {
     await extract('./subtitles/zip_subtitles/' + zipName, {
         dir: unzipDirectoryPath,
         onEntry: (entry, zipfile) => {
-            // console.log(entry)
             entry.fileName = outputFileName;
         }
     })
+
     extractCount++;
     console.log('Extraction complete ' + extractCount)
   } catch (err) {
