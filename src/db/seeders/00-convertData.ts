@@ -1,14 +1,15 @@
 import fs from 'fs'
 import {isNumber, isString} from "lodash";
 import {LANGUAGE, ROLE} from "../../utils/enums";
+
 const moviesData = JSON.parse(fs.readFileSync('./scripts/movies/all_movies.json', { encoding: 'utf-8'}))
 const subtitlesData = JSON.parse(fs.readFileSync('./scripts/subtitles/all_subtitles.json', { encoding: 'utf-8'}))
 
 const genres: Array<any> = []
 const movieGenres: Array<any> = []
 const subtitles: Array<any> = []
-const persons: Array<any> = []
-const roles: Array<ROLE> = []
+const persons: Array<{ primaryName: string, role: ROLE }> = []
+
 const moviesPersons: Array<any> = []
 
 const movies = moviesData.map((movie: any, movieIndex: number) => {
@@ -22,11 +23,10 @@ const movies = moviesData.map((movie: any, movieIndex: number) => {
         if (actor.charAt(0) === ' ') {
             actor = actor.substring(1, actor.length)
         }
-        let personIndex: number = persons.indexOf(actor)
-        if (personIndex === -1 || roles[personIndex] !== ROLE.ACTOR) {
-            persons.push(actor)
+        let personIndex: number = persons.indexOf({primaryName: actor, role: ROLE.ACTOR})
+        if (personIndex === -1) {
+            persons.push({primaryName: actor, role: ROLE.ACTOR})
             personIndex = persons.length - 1
-            roles.push(ROLE.ACTOR)
         }
         moviesPersons.push({
             movieID: movieIndex + 1,
@@ -38,28 +38,26 @@ const movies = moviesData.map((movie: any, movieIndex: number) => {
         if (writer.charAt(0) === ' ') {
             writer = writer.substring(1, writer.length)
         }
-        let personIndex: number = persons.indexOf(writer)
-        if (personIndex === -1 || roles[personIndex] !== ROLE.SCENARIST) {
-            persons.push(writer)
+        let personIndex: number = persons.indexOf({primaryName: writer, role: ROLE.SCENARIST})
+        if (personIndex === -1) {
+            persons.push({primaryName: writer, role: ROLE.SCENARIST})
             personIndex = persons.length - 1
-            roles.push(ROLE.SCENARIST)
         }
         moviesPersons.push({
             movieID: movieIndex + 1,
             personID: personIndex + 1
 
-        })
+            })
     })
 
     tmpDirector.forEach((director: string) => {
         if (director.charAt(0) === ' ') {
             director = director.substring(1, director.length)
         }
-        let personIndex: number = persons.indexOf(director)
-        if (personIndex === -1 || roles[personIndex] !== ROLE.DIRECTOR) {
-            persons.push(director)
+        let personIndex: number = persons.indexOf({primaryName: director, role: ROLE.DIRECTOR})
+        if (personIndex === -1) {
+            persons.push({primaryName: director, role: ROLE.DIRECTOR})
             personIndex = persons.length - 1
-            roles.push(ROLE.DIRECTOR)
         }
         moviesPersons.push({
             movieID: movieIndex + 1,
@@ -112,7 +110,7 @@ const movies = moviesData.map((movie: any, movieIndex: number) => {
     }
 })
 
-export { movies, subtitles, genres, movieGenres, persons, moviesPersons, roles }
+export { movies, subtitles, genres, movieGenres, persons, moviesPersons }
 
 export async function up() {
     return await Promise.resolve()

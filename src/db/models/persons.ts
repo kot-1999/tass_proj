@@ -1,11 +1,12 @@
 import { Sequelize, DataTypes } from 'sequelize'
 import { DatabaseModel } from '../../types/models'
 import { Models } from './index'
+import {ROLE} from "../../utils/enums";
 
 export class PersonModel extends DatabaseModel {
     id: number
     primaryName: string
-
+    role: ROLE
 }
 
 export default (sequelize: Sequelize) => {

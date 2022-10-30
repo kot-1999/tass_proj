@@ -1,11 +1,11 @@
 import {models} from "../models"
-import {persons, roles} from "./00-convertData";
+import {persons} from "./00-convertData";
 
 export async function up() {
     try {
         const { Persons } = models
 
-        return await Persons.bulkCreate(persons.map((person, index) => ({ primaryName: person, role: roles[index] })))
+        return await Persons.bulkCreate(persons)
     } catch (err) {
         console.log(err)
         return Promise.reject(err)
