@@ -1,4 +1,4 @@
-import { forEach, filter } from 'lodash'
+import { forEach } from 'lodash'
 import { Sequelize } from 'sequelize'
 import * as database from '../../../config/database'
 import pg from 'pg'

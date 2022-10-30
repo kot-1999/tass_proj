@@ -46,7 +46,7 @@ export default (sequelize: Sequelize) => {
                 model: models.MoviesPersons,
                 unique: false
             },
-            constraints: false
+            constraints: true
         })
     }
     return PersonModel

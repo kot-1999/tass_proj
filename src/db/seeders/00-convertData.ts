@@ -23,7 +23,17 @@ const movies = moviesData.map((movie: any, movieIndex: number) => {
         if (actor.charAt(0) === ' ') {
             actor = actor.substring(1, actor.length)
         }
-        let personIndex: number = persons.indexOf({primaryName: actor, role: ROLE.ACTOR})
+        if (actor.charAt(actor.length - 1) === ' ') {
+            actor = actor.substring(0, actor.length - 2)
+        }
+
+        let personIndex: number = -1
+        for (let i = 0; i < persons.length; i+=1) {
+            if (persons[i].primaryName === actor && persons[i].role === ROLE.ACTOR) {
+                personIndex = i
+                break
+            }
+        }
         if (personIndex === -1) {
             persons.push({primaryName: actor, role: ROLE.ACTOR})
             personIndex = persons.length - 1
@@ -38,7 +48,16 @@ const movies = moviesData.map((movie: any, movieIndex: number) => {
         if (writer.charAt(0) === ' ') {
             writer = writer.substring(1, writer.length)
         }
-        let personIndex: number = persons.indexOf({primaryName: writer, role: ROLE.SCENARIST})
+        if (writer.charAt(writer.length - 1) === ' ') {
+            writer = writer.substring(0, writer.length - 2)
+        }
+        let personIndex: number = -1
+        for (let i = 0; i < persons.length; i+=1) {
+            if (persons[i].primaryName === writer && persons[i].role === ROLE.SCENARIST) {
+                personIndex = i
+                break
+            }
+        }
         if (personIndex === -1) {
             persons.push({primaryName: writer, role: ROLE.SCENARIST})
             personIndex = persons.length - 1
@@ -54,7 +73,16 @@ const movies = moviesData.map((movie: any, movieIndex: number) => {
         if (director.charAt(0) === ' ') {
             director = director.substring(1, director.length)
         }
-        let personIndex: number = persons.indexOf({primaryName: director, role: ROLE.DIRECTOR})
+        if (director.charAt(director.length - 1) === ' ') {
+            director = director.substring(0, director.length - 2)
+        }
+        let personIndex: number = -1
+        for (let i = 0; i < persons.length; i+=1) {
+            if (persons[i].primaryName === director && persons[i].role === ROLE.DIRECTOR) {
+                personIndex = i
+                break
+            }
+        }
         if (personIndex === -1) {
             persons.push({primaryName: director, role: ROLE.DIRECTOR})
             personIndex = persons.length - 1
