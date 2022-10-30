@@ -26,6 +26,6 @@
     $ mkdir json_subtitles, unzip_subtitles, zip_subtitles
 3. Move to **zip_subtitles** folder
     $ cd zip_subtitles
-4. Extract [zip file](https://drive.google.com/file/d/1qPJ_tBzpwzqRlo7da8-ZUFGAfToiNMTN/view?usp=sharing) to this folder
+4. Extract [zip file](https://drive.google.com/file/d/1qaO-Smb-n3aCRgt-VN3RBtjM16LnveAV/view?usp=sharing) to this folder
 ### Run all scripts to generate all_subtitles.json and all_movies.json
     $ node movies_to_json.js && node generate_id_array.js && node extract_subtitles.js && node subtitles_to_json.js && node all_subtitles_json.js && node all_movies_with_sub.js
