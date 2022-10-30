@@ -1,6 +1,7 @@
 import fs from 'fs'
 import {isNumber, isString} from "lodash";
 import {LANGUAGE, ROLE} from "../../utils/enums";
+import {number} from "joi";
 
 const moviesData = JSON.parse(fs.readFileSync('./scripts/movies/all_movies.json', { encoding: 'utf-8'}))
 const subtitlesData = JSON.parse(fs.readFileSync('./scripts/subtitles/all_subtitles.json', { encoding: 'utf-8'}))
@@ -138,7 +139,19 @@ const movies = moviesData.map((movie: any, movieIndex: number) => {
     }
 })
 
+for (let a = 0; a < moviesPersons.length - 1; a += 1) {
+    for (let b = a+1; b < moviesPersons.length; b += 1) {
+        if (moviesPersons[a].movieID === moviesPersons[b].movieID && moviesPersons[a].personID === moviesPersons[b].personID) {
+            moviesPersons.splice(b, 1)
+            a -= 1
+            b -= 1
+        }
+    }
+}
+
+
 export { movies, subtitles, genres, movieGenres, persons, moviesPersons }
+
 
 export async function up() {
     return await Promise.resolve()
