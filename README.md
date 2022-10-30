@@ -15,7 +15,7 @@
 1. Create a dir
     $ cd scripts
     $ mkdir movies
-2. Download [csv file](https://drive.google.com/file/d/1A9iaJTR0Dh4Iu-0KNdmAjP8l4MV9Z9Nd/view?usp=sharing) with all movies
+2. Download [csv file](https://drive.google.com/file/d/1qaO-Smb-n3aCRgt-VN3RBtjM16LnveAV/view?usp=sharing) with all movies
 3. Copy this file to **movies** folder
 ### Prepare subtitles
 1. Create a main subtitles dir
