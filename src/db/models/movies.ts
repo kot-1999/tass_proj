@@ -109,7 +109,7 @@ export default (sequelize: Sequelize) => {
                 model: models.MoviesPersons,
                 unique: false
             },
-            constraints: true
+            constraints: false
         })
         MoviesModel.hasMany(models.Subtitles, {
             foreignKey: {
