@@ -6,7 +6,8 @@
   "scripts": {
     "debug": "cross-env TS_NODE_FILES=true TS_NODE_TRANSPILE_ONLY=true NODE_ENV=development DEBUG=tass:* nodemon --watch src -L -e js,yaml,ts --exec 'node --inspect -r dotenv/config -r ts-node/register src/index.ts'",
     "build": "rimraf ./distDatabase && tsc --project tsconfig.database.json",
-    "seed": "npm run build && \"./node_modules/.bin/sequelize\" db:seed:all --config \"./distDatabase/config/database.js\" --seeders-path \"./distDatabase/src/db/seeders/\""
+    "seed": "npm run build && \"./node_modules/.bin/sequelize\" db:seed:all --config \"./distDatabase/config/database.js\" --seeders-path \"./distDatabase/src/db/seeders/\"",
+    "convertCsvToJson": "cd scripts && node movies_to_json.js && node generate_id_array.js && node extract_subtitles.js && node subtitles_to_json.js && node all_subtitles_json.js && node all_movies_with_sub.js"
   },
   "keywords": [],
   "author": "",
