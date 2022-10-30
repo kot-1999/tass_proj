@@ -14,61 +14,61 @@ const moviesPersons: Array<any> = []
 const movies = moviesData.map((movie: any, movieIndex: number) => {
 
     // Create persons and roles arrays
-    const tmpActors = isString(movie?.actors) ? [movie?.actors] : movie?.actors
-    const tmpWriters= isString(movie?.writer) ? [movie?.writer] : movie?.writer
-    const tmpDirector= isString(movie?.director) ? [movie?.director] : movie?.director
+    // const tmpActors = isString(movie?.actors) ? [movie?.actors] : movie?.actors
+    // const tmpWriters= isString(movie?.writer) ? [movie?.writer] : movie?.writer
+    // const tmpDirector= isString(movie?.director) ? [movie?.director] : movie?.director
+    //
+    // tmpActors.forEach((actor: string) => {
+    //     if (actor.charAt(0) === ' ') {
+    //         actor = actor.substring(1, actor.length)
+    //     }
+    //     let personIndex: number = persons.indexOf(actor)
+    //     if (personIndex === -1 || roles[personIndex] !== ROLE.ACTOR) {
+    //         persons.push(actor)
+    //         personIndex = persons.length - 1
+    //         roles.push(ROLE.ACTOR)
+    //     }
+    //     moviesPersons.push({
+    //         movieID: movieIndex + 1,
+    //         personID: personIndex + 1,
+    //     })
+    // })
+    //
+    // tmpWriters.forEach((writer: string) => {
+    //     if (writer.charAt(0) === ' ') {
+    //         writer = writer.substring(1, writer.length)
+    //     }
+    //     let personIndex: number = persons.indexOf(writer)
+    //     if (personIndex === -1 || roles[personIndex] !== ROLE.SCENARIST) {
+    //         persons.push(writer)
+    //         personIndex = persons.length - 1
+    //         roles.push(ROLE.SCENARIST)
+    //     }
+    //     moviesPersons.push({
+    //         movieID: movieIndex + 1,
+    //         personID: personIndex + 1
+    //
+    //     })
+    // })
+    //
+    // tmpDirector.forEach((director: string) => {
+    //     if (director.charAt(0) === ' ') {
+    //         director = director.substring(1, director.length)
+    //     }
+    //     let personIndex: number = persons.indexOf(director)
+    //     if (personIndex === -1 || roles[personIndex] !== ROLE.DIRECTOR) {
+    //         persons.push(director)
+    //         personIndex = persons.length - 1
+    //         roles.push(ROLE.DIRECTOR)
+    //     }
+    //     moviesPersons.push({
+    //         movieID: movieIndex + 1,
+    //         personID: personIndex + 1
+    //
+    //     })
+    // })
 
-    tmpActors.forEach((actor: string) => {
-        if (actor.charAt(0) === ' ') {
-            actor = actor.substring(1, actor.length)
-        }
-        let personIndex: number = persons.indexOf(actor)
-        if (personIndex === -1 || roles[personIndex] !== ROLE.ACTOR) {
-            persons.push(actor)
-            personIndex = persons.length - 1
-            roles.push(ROLE.ACTOR)
-        }
-        moviesPersons.push({
-            movieID: movieIndex + 1,
-            personID: personIndex + 1,
-        })
-    })
-
-    tmpWriters.forEach((writer: string) => {
-        if (writer.charAt(0) === ' ') {
-            writer = writer.substring(1, writer.length)
-        }
-        let personIndex: number = persons.indexOf(writer)
-        if (personIndex === -1 || roles[personIndex] !== ROLE.SCENARIST) {
-            persons.push(writer)
-            personIndex = persons.length - 1
-            roles.push(ROLE.SCENARIST)
-        }
-        moviesPersons.push({
-            movieID: movieIndex + 1,
-            personID: personIndex + 1
-
-        })
-    })
-
-    tmpDirector.forEach((director: string) => {
-        if (director.charAt(0) === ' ') {
-            director = director.substring(1, director.length)
-        }
-        let personIndex: number = persons.indexOf(director)
-        if (personIndex === -1 || roles[personIndex] !== ROLE.DIRECTOR) {
-            persons.push(director)
-            personIndex = persons.length - 1
-            roles.push(ROLE.DIRECTOR)
-        }
-        moviesPersons.push({
-            movieID: movieIndex + 1,
-            personID: personIndex + 1
-
-        })
-    })
-
-
+/*
     // Create subtitles array
     subtitlesData.filter((subtitle: any) =>
             subtitle.movieID === movie.imdb_title_id)
@@ -80,7 +80,7 @@ const movies = moviesData.map((movie: any, movieIndex: number) => {
             startTime: isNumber(subtitle.start) ? subtitle.start : 0 ,
             endTime: isNumber(subtitle.end) ? subtitle.end : 0,
         }))
-
+*/
     // Add new genres to genres array also generate indexes for movieGenres
 
     const tmpGenres = isString(movie?.genre) ? [movie?.genre] : movie?.genre
